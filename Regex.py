@@ -34,4 +34,5 @@ Expected Outcome:
 '''
 
 log_data = "12-25-2022: @john Logged in. 01-01-2023: @jane Accessed the dashboard."
-# Your solution here
+formatted_date = re.sub(r"(\d{2})-(\d{2})-(\d{4})", r"\3-\2-\1", log_data)
+print(formatted_date)
