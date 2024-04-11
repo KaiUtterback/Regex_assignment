@@ -191,6 +191,21 @@ Expected Outcomes:
 
 '''
 
+import re
+
 price_data = "Items cost $15.99, 20.00 USD, and 7.50$."
-# Standardize all prices to 'USD XX.XX' format
-# Your code here
+
+def standardize_prices(data):
+
+    pattern = r'\$?(\d+\.\d{2})\s?USD|\$?(\d+\.\d{2})\$?'
+    
+
+    def format_match(match):
+        price = match.group(1) if match.group(1) else match.group(2)
+        return f'USD {price}'
+
+    standardized_data = re.sub(pattern, format_match, data)
+    return standardized_data
+
+standardized_prices = standardize_prices(price_data)
+print("Standardized Prices:", standardized_prices)
